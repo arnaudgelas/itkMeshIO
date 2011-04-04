@@ -991,11 +991,7 @@ int gifti_str2attr_darray(giiDataArray * DA, const char *attr,
     else if( !strcmp(attr, "ExternalFileName") )
         DA->ext_fname = gifti_strdup(value);
     else if( !strcmp(attr, "ExternalFileOffset") )
-#if defined(_WIN32) && !defined(__MINGW32__) && !defined(__CYGWIN__)
-	    DA->ext_offset = atol(value);  /* There is no atoll defined in MS VC++ */
-#else
         DA->ext_offset = atoll(value);  /* assumes C99 */
-#endif
     else {
         if( G.verb > 1 )        /* might go into ex_atrs */
             fprintf(stderr,"** unknown giiDataArray attr, '%s'='%s'\n",

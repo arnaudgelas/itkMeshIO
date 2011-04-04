@@ -2221,11 +2221,7 @@ static int decode_ascii(gxml_data * xd, char * cdata, int cdlen, int type,
             p1 = cdata;
             prev = p1;
             while( (vals < 0 || vals < *nvals) && p1 ) {
-#if defined(_WIN32) && !defined(__MINGW32__) && !defined(__CYGWIN__)
-	            llval = strtol(p1, &p2, 10);   /* There is no strtoll defined in MS VC++ */
-#else
-	            llval = strtoll(p1, &p2, 10);   /* try to read next value */
-#endif
+                llval = strtoll(p1, &p2, 10);   /* try to read next value */
                 if( p1 == p2 ) break;   /* nothing read, terminate loop */
                 prev = p1;              /* store old success ptr */
                 p1 = p2;                /* move to next posn */

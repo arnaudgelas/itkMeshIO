@@ -1,13 +1,11 @@
 #ifndef GIFTI_IO_H
 #define GIFTI_IO_H
 
-#include <itk_zlib.h>
+#include <zlib.h>
 #include <expat.h>
 #include <nifti1_io.h>
 /* also #include "gifti_xml.h", but at the end */
-#ifdef  __cplusplus
-extern "C" {
-#endif
+
 /* ---------------------------------------------------------------------- */
 /* These must be 0-based and sequential.
         - 0 matches _UNDEF
@@ -324,11 +322,6 @@ char * gifticlib_version         (void);
 
 #undef G_CHECK_NULL_STR
 #define G_CHECK_NULL_STR(s) (s ? s : "NULL")
-
-
-#ifdef  __cplusplus
-}
-#endif
 
 #include "gifti_xml.h" /* needs gifti_io.h, but users should not #include it */
 
